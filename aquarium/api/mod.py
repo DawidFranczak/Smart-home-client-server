@@ -6,6 +6,7 @@ def send_data(mess, ip, port):
     '''
     Send message to microcontroler on port and ip  and waiting for response
     '''
+
     try:
         wiad = str.encode(mess)
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -19,20 +20,12 @@ def send_data(mess, ip, port):
         return False
 
 
-def check_aqua(request):
+def check_aqua(led_start, led_stop, fluo_start, fluo_stop, ip, port):
     '''
     Turn on or turn off fluo lamp and led dependence on time
     and save it to database
     '''
 
-    led_start = request.POST.get('led_start')
-    led_stop = request.POST.get('led_stop')
-    fluo_start = request.POST.get('fluo_start')
-    fluo_stop = request.POST.get('fluo_stop')
-    # ip = request.POST.get('ip')
-    # port = request.POST.get('port')
-    ip = '192.168.0.124'
-    port = 7863
     if datetime.now().hour < 10:
         hours = '0' + str(datetime.now().hour)
     else:
@@ -70,4 +63,5 @@ def check_aqua(request):
         'response': True,
         'fluo_mode': fluo_mode,
         'led_mode': led_mode,
+        'ip': ip,
     }
