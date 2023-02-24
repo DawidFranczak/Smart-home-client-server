@@ -2,7 +2,7 @@ from datetime import datetime
 import requests
 import json
 
-from const.const import SERVER_URL, CLIENT_URL, TEMPERATURE_GET_ALL, TEMPERATURE_UPDATE
+from const.urls import SERVER_URL, CLIENT_URL, TEMPERATURE_GET_ALL, TEMPERATURE_UPDATE
 from .mod import measurement
 
 

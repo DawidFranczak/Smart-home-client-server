@@ -3,7 +3,7 @@ import requests
 import json
 
 from .mod import check_aqua
-from const.const import SERVER_URL, CLIENT_URL, AQUARIUM_GET_ALL, AQUARIUM_UPDATE
+from const.urls import SERVER_URL, CLIENT_URL, AQUARIUM_GET_ALL, AQUARIUM_UPDATE
 
 
 def aquasCheck():

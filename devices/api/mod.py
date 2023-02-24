@@ -1,5 +1,5 @@
 import socket
-# from datetime import datetime
+from const.commands import ADD_UID
 
 
 def add_device(message, answer, port):
@@ -35,8 +35,7 @@ def add_device(message, answer, port):
 def add_card(ip, port):
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        message = str.encode('add-tag')
-        sock.sendto(message, (ip, port))
+        sock.sendto(ADD_UID, (ip, port))
         sock.settimeout(1)
         data = sock.recvfrom(128)
         uid = int(data[0].decode('UTF-8'))
