@@ -4,6 +4,7 @@ import os
 import sys
 import threading
 from aquarium.api.thread import aquasCheck
+from temperature.api.thread import tempCheck
 
 
 def main():
@@ -22,6 +23,7 @@ def main():
 
 
 if __name__ == '__main__':
-    aqua = threading.Thread(target=aquasCheck).start()
+    # aqua = threading.Thread(target=aquasCheck).start()
+    aqua = threading.Thread(target=tempCheck).start()
 
     main()
