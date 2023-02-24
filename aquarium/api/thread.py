@@ -14,21 +14,22 @@ def aquasCheck():
 
     # while True:
     # new_minutes = datetime.now().minute
-
     # if old_minutes != new_minutes:
-    if True:
+    for i in range(1):
+        if True:
+            try:
+                data = {"url": CLIENT_URL}
+                aquas = requests.post(
+                    SERVER_URL + AQUARIUM_GET_ALL, data=data)
+                aquas = aquas.json()
+                test = [check_aqua(aqua['led_start'], aqua['led_stop'],
+                                   aqua['fluo_start'], aqua['fluo_stop'], aqua['ip'], aqua['port']) for aqua in aquas if not aqua['mode']]
 
-        data = {"url": CLIENT_URL}
-        aquas = requests.post(
-            SERVER_URL + AQUARIUM_GET_ALL, data=data)
-        aquas = aquas.json()
-        print(aquas)
-        test = [check_aqua(aqua['led_start'], aqua['led_stop'],
-                           aqua['fluo_start'], aqua['fluo_stop'], aqua['ip'], aqua['port']) for aqua in aquas if not aqua['mode']]
+                headers = {'Content-Type': 'application/json',
+                           'Accept': 'application/json'}
 
-        headers = {'Content-Type': 'application/json',
-                   'Accept': 'application/json'}
-
-        data['settings'] = test
-        requests.post(
-            SERVER_URL+AQUARIUM_UPDATE, data=json.dumps(data), headers=headers)
+                data['settings'] = test
+                requests.post(
+                    SERVER_URL+AQUARIUM_UPDATE, data=json.dumps(data), headers=headers)
+            except Exception as e:
+                print(e)
