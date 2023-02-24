@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-d$jpv8-zktw0!8t-k@zkurc+))e7cj6q%!7j$wp7-dgim8+qja
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [SETTINGS_URL]
+ALLOWED_HOSTS = [SETTINGS_URL, '127.0.0.1']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'devices',
     'aquarium',
     'temperature'
 ]

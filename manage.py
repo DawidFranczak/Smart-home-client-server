@@ -24,6 +24,6 @@ def main():
 
 if __name__ == '__main__':
     # aqua = threading.Thread(target=aquasCheck).start()
-    aqua = threading.Thread(target=tempCheck).start()
+    # aqua = threading.Thread(target=tempCheck).start()
 
     main()
