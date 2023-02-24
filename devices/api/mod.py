@@ -17,10 +17,10 @@ def add_device(message, answer, port):
                 new_sensor_ip = str(data[1][0])
                 sock.close()
 
-            return {
-                "success": True,
-                "ip": new_sensor_ip,
-            }
+                return {
+                    "success": True,
+                    "ip": new_sensor_ip,
+                }
 
         except TimeoutError:
             continue
