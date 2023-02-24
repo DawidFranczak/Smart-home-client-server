@@ -4,8 +4,8 @@ from const.mod import send_data
 
 
 @api_view(['PUT'])
-# /api/stairs/change/
-def changeStairs(request):
+# /api/sunblind/message/
+def messageSunblind(request):
     message = str.encode(request.data.get('message'))
     ip = request.data.get('ip')
     port = int(request.data.get('port'))

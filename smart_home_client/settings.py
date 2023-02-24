@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'light',
     'stairs',
     'devices',
+    'sunblind',
     'aquarium',
     'temperature'
 ]
