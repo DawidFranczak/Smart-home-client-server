@@ -2,10 +2,12 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+
 import threading
 from aquarium.api.thread import aquasCheck
 from temperature.api.thread import tempCheck
 from listener.thread import listener
+
 
 def main():
     """Run administrative tasks."""
@@ -23,7 +25,9 @@ def main():
 
 
 if __name__ == '__main__':
-    # aqua = threading.Thread(target=aquasCheck).start()
-    # aqua = threading.Thread(target=tempCheck).start()
+
     threading.Thread(target=listener).start()
+    threading.Thread(target=aquasCheck, daemon=True).start()
+    threading.Thread(target=tempCheck, daemon=True).start()
+
     main()
