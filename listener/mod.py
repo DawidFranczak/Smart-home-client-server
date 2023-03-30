@@ -13,7 +13,7 @@ def check_uid(data):
         "ip": ip,
         "url": CLIENT_URL,
     }
-    answer = requests.post(SERVER_URL+UID_CHECK, data=data).json()
+    answer = requests.post(SERVER_URL + UID_CHECK, data=data).json()
     mess = "access" if answer["success"] else "acces-denied"
     send_data(mess, ip, port)
 
@@ -25,5 +25,5 @@ def check_lamp(data):
         "ip": ip,
         "url": CLIENT_URL,
     }
-    answer = requests.post(SERVER_URL+LAMP_CHECK, data=data).json()
+    answer = requests.post(SERVER_URL + LAMP_CHECK, data=data).json()
     send_data(message, answer["ip"], answer["port"])

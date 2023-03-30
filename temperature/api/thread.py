@@ -14,20 +14,26 @@ def tempCheck():
         if hour_old != hour_now:
             try:
                 data = {"url": CLIENT_URL}
-                sensors = requests.get(
-                    SERVER_URL + TEMPERATURE_GET_ALL, params=data)
+                sensors = requests.get(SERVER_URL + TEMPERATURE_GET_ALL, params=data)
                 sensors = sensors.json()
 
-                data['measurment'] = [measurement(sensor['ip'], sensor['port'])
-                                      for sensor in sensors]
+                data["measurment"] = [
+                    measurement(sensor["ip"], sensor["port"]) for sensor in sensors
+                ]
 
-                headers = {'Content-Type': 'application/json',
-                           'Accept': 'application/json'}
+                headers = {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                }
 
-                requests.put(SERVER_URL+TEMPERATURE_UPDATE,
-                             data=json.dumps(data), headers=headers)
+                requests.put(
+                    SERVER_URL + TEMPERATURE_UPDATE,
+                    data=json.dumps(data),
+                    headers=headers,
+                )
                 hour_old = hour_now
             except Exception as e:
                 print(e)
                 print("Brak połączenia natępna próba za 1s")
                 time.sleep(1)
+        time.sleep(1)

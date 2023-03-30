@@ -1,7 +1,7 @@
 from django.urls import path
-from . import views
+from .views import aqua_change, aqua_check
 
 urlpatterns = [
-    path('change/', views.aquaChange, name="aquaChange"),
-    path('check/', views.aquaCheck, name="aquaCheck"),
+    path("change/", aqua_change, name="aqua_change"),
+    path("check/", aqua_check, name="aqua_check"),
 ]

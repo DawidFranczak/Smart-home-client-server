@@ -2,8 +2,8 @@ import socket
 import threading
 import time
 
-from .mod import check_uid, check_lamp
 from const.commands import LISNER_PORT
+from .mod import check_uid, check_lamp
 
 
 def listener():
@@ -11,12 +11,11 @@ def listener():
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     sock.bind(("", LISNER_PORT))
 
-    while (True):
+    while True:
         try:
             sock.settimeout(0.5)
             data_rec = sock.recvfrom(1024)
             message = data_rec[0].decode("UTF-8")
-            print(message)
             if message:
                 match message:
                     case ("still" | "click" | "RFID"):
@@ -31,5 +30,5 @@ def listener():
         except:
             if not threading.main_thread().is_alive():
                 sock.close()
-                print("koniec pracy")
                 break
+        time.sleep(0.5)

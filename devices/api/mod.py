@@ -2,11 +2,10 @@ import socket
 from const.commands import ADD_UID
 
 
-def add_device(message, answer, port):
-
+def add_device(message: str, answer: str, port: int) -> dict:
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     for i in range(2, 254):
-        check_ip = "192.168.0."+str(i)
+        check_ip = "192.168.0." + str(i)
 
         try:
             sock.sendto(message, (check_ip, port))
@@ -25,26 +24,21 @@ def add_device(message, answer, port):
         except TimeoutError:
             continue
 
-    else:
-        sock.close()
-        return {
-            "success": False,
-        }
+    sock.close()
+    return {
+        "success": False,
+    }
 
 
-def add_card(ip, port):
+def add_card(ip: str, port: int) -> dict:
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         sock.sendto(ADD_UID, (ip, port))
         sock.settimeout(1)
         data = sock.recvfrom(128)
-        uid = int(data[0].decode('UTF-8'))
-        return {
-            "success": True,
-            "uid": uid
-        }
+        uid = int(data[0].decode("UTF-8"))
+        return {"success": True, "uid": uid}
 
-    except Exception as e:
-        return {
-            "success": False
-        }
+    except TimeoutError:
+        sock.close()
+        return {"success": False}

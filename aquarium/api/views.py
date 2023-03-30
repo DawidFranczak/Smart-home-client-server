@@ -1,26 +1,27 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework import status
 
 from .mod import send_data, check_aqua
 
 
-@api_view(['POST'])
+@api_view(["POST"])
 # /aquarium/change
-def aquaChange(request):
-    message = request.POST.get('message')
-    ip = request.POST.get('ip')
-    port = int(request.POST.get('port'))
-    return Response({"response": send_data(message, ip, port)})
+def aqua_change(request):
+    message: str = request.POST.get("message")
+    ip: str = request.POST.get("ip")
+    port: int = int(request.POST.get("port"))
+
+    if send_data(message, ip, port):
+        return Response({"response": True}, status=status.HTTP_200_OK)
+    return Response({"response": False}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-@api_view(['POST'])
+@api_view(["POST"])
 # /aquarium/check
-def aquaCheck(request):
-    led_start = request.POST.get('led_start')
-    led_stop = request.POST.get('led_stop')
-    fluo_start = request.POST.get('fluo_start')
-    fluo_stop = request.POST.get('fluo_stop')
-    ip = request.POST.get('ip')
-    port = int(request.POST.get('port'))
-    response = check_aqua(led_start, led_stop, fluo_start, fluo_stop, ip, port)
-    return Response(response)
+def aqua_check(request):
+    response = check_aqua(request.POST)
+
+    if response["response"]:
+        return Response(response, status=status.HTTP_200_OK)
+    return Response({"response": False}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
