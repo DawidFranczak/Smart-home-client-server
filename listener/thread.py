@@ -6,7 +6,7 @@ from const.commands import LISNER_PORT
 from .mod import check_uid, check_lamp
 
 
-def listener():
+def listener() -> None:
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     sock.bind(("", LISNER_PORT))

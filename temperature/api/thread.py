@@ -1,20 +1,22 @@
 from datetime import datetime
-import requests
-import json
 import time
+import json
+import requests
 
 from const.urls import SERVER_URL, CLIENT_URL, TEMPERATURE_GET_ALL, TEMPERATURE_UPDATE
 from .mod import measurement
 
 
-def tempCheck():
+def temp_check() -> None:
     hour_old = datetime.now().hour
     while True:
         hour_now = datetime.now().hour
         if hour_old != hour_now:
             try:
                 data = {"url": CLIENT_URL}
-                sensors = requests.get(SERVER_URL + TEMPERATURE_GET_ALL, params=data)
+                sensors = requests.get(
+                    SERVER_URL + TEMPERATURE_GET_ALL, params=data, timeout=1
+                )
                 sensors = sensors.json()
 
                 data["measurment"] = [
@@ -30,10 +32,10 @@ def tempCheck():
                     SERVER_URL + TEMPERATURE_UPDATE,
                     data=json.dumps(data),
                     headers=headers,
+                    timeout=1,
                 )
                 hour_old = hour_now
-            except Exception as e:
-                print(e)
+            except TimeoutError:
                 print("Brak połączenia natępna próba za 1s")
                 time.sleep(1)
         time.sleep(1)

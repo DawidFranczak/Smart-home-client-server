@@ -1,7 +1,7 @@
 import socket
 
 
-def send_data(mess, ip, port) -> bool:
+def send_data(mess: str, ip: str, port: int) -> bool:
     """
     Send message to microcontroler on port and ip  and waiting for response
     """

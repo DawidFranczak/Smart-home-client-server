@@ -4,26 +4,26 @@ from const.urls import CLIENT_URL, SERVER_URL, UID_CHECK, LAMP_CHECK
 from const.mod import send_data
 
 
-def check_uid(data):
-    uid = data[0].decode("UTF-8")
-    ip = data[1][0]
-    port = data[1][1]
-    data = {
+def check_uid(incoming_data) -> None:
+    uid: str = incoming_data[0].decode("UTF-8")
+    ip: str = incoming_data[1][0]
+    port: str = incoming_data[1][1]
+    data: dict = {
         "uid": uid,
         "ip": ip,
         "url": CLIENT_URL,
     }
-    answer = requests.post(SERVER_URL + UID_CHECK, data=data).json()
+    answer = requests.post(SERVER_URL + UID_CHECK, data=data, timeout=1).json()
     mess = "access" if answer["success"] else "acces-denied"
     send_data(mess, ip, port)
 
 
-def check_lamp(data):
-    message = data[0].decode("UTF-8")
-    ip = data[1][0]
-    data = {
+def check_lamp(incoming_data) -> None:
+    message: str = incoming_data[0].decode("UTF-8")
+    ip: str = incoming_data[1][0]
+    data: dict = {
         "ip": ip,
         "url": CLIENT_URL,
     }
-    answer = requests.post(SERVER_URL + LAMP_CHECK, data=data).json()
+    answer = requests.post(SERVER_URL + LAMP_CHECK, data=data, timeout=1).json()
     send_data(message, answer["ip"], answer["port"])

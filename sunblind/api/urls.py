@@ -1,6 +1,6 @@
 from django.urls import path
-from . import views
+from views import message_sunblind
 
 urlpatterns = [
-    path("message/", views.messageSunblind, name="messageSunblind"),
+    path("message/", message_sunblind, name="message_sunblind"),
 ]
