@@ -32,15 +32,11 @@ def check_aqua(request_post) -> dict:
     ip: str = request_post.get("ip")
     port: int = int(request_post.get("port"))
 
-    if datetime.now().hour < 10:
-        hours = "0" + str(datetime.now().hour)
-    else:
-        hours = str(datetime.now().hour)
+    hour: int = datetime.now().hour
+    hours: str = str(hour) if hour > 9 else "0" + str(hour)
 
-    if datetime.now().minute < 10:
-        minutes = ":0" + str(datetime.now().minute) + ":" + str(datetime.now().second)
-    else:
-        minutes = ":" + str(datetime.now().minute) + ":" + str(datetime.now().second)
+    minute = datetime.now().minute
+    minutes = str(minute) if minute > 9 else "0" + str(minute)
 
     time_now = hours + minutes
 

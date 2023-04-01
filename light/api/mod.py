@@ -1,4 +1,5 @@
 import socket
+
 from const.commands import CHANGE_LIGHT
 
 

@@ -1,7 +1,6 @@
 import requests
-from const.urls import CLIENT_URL, SERVER_URL, UID_CHECK, LAMP_CHECK
-
 from const.mod import send_data
+from const.urls import CLIENT_URL, LAMP_CHECK, SERVER_URL, UID_CHECK
 
 
 def check_uid(incoming_data) -> None:

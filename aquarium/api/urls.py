@@ -1,4 +1,5 @@
 from django.urls import path
+
 from .views import aqua_change, aqua_check
 
 urlpatterns = [

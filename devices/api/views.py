@@ -1,7 +1,8 @@
+from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework import status
-from .mod import add_device, add_card
+
+from .mod import add_card, add_device
 
 
 @api_view(["POST"])

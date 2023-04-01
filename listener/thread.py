@@ -3,7 +3,8 @@ import threading
 import time
 
 from const.commands import LISNER_PORT
-from .mod import check_uid, check_lamp
+
+from .mod import check_lamp, check_uid
 
 
 def listener() -> None:

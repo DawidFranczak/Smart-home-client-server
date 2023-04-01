@@ -2,11 +2,11 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-
 import threading
+
 from aquarium.api.thread import aquas_check
-from temperature.api.thread import temp_check
 from listener.thread import listener
+from temperature.api.thread import temp_check
 
 
 def main():

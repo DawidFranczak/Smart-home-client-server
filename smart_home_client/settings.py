@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+
 from const.urls import SETTINGS_URL
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.

@@ -1,10 +1,12 @@
-from datetime import datetime
-import time
 import json
+import time
+from datetime import datetime
+
 import requests
+from const.urls import (AQUARIUM_GET_ALL, AQUARIUM_UPDATE, CLIENT_URL,
+                        SERVER_URL)
 
 from .mod import check_aqua
-from const.urls import SERVER_URL, CLIENT_URL, AQUARIUM_GET_ALL, AQUARIUM_UPDATE
 
 
 def aquas_check():
