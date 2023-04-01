@@ -3,8 +3,8 @@ import time
 from datetime import datetime
 
 import requests
-from const.urls import (AQUARIUM_GET_ALL, AQUARIUM_UPDATE, CLIENT_URL,
-                        SERVER_URL)
+
+from const.urls import AQUARIUM_GET_ALL, AQUARIUM_UPDATE, CLIENT_URL, SERVER_URL
 
 from .mod import check_aqua
 

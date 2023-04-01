@@ -1,6 +1,7 @@
-from const.mod import send_data
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+
+from const.mod import send_data
 
 
 @api_view(["PUT"])

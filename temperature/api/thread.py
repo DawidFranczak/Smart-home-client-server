@@ -3,8 +3,8 @@ import time
 from datetime import datetime
 
 import requests
-from const.urls import (CLIENT_URL, SERVER_URL, TEMPERATURE_GET_ALL,
-                        TEMPERATURE_UPDATE)
+
+from const.urls import CLIENT_URL, SERVER_URL, TEMPERATURE_GET_ALL, TEMPERATURE_UPDATE
 
 from .mod import measurement
 

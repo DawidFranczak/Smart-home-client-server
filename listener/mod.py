@@ -1,4 +1,5 @@
 import requests
+
 from const.mod import send_data
 from const.urls import CLIENT_URL, LAMP_CHECK, SERVER_URL, UID_CHECK
 
