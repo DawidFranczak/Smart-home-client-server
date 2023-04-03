@@ -8,6 +8,10 @@ from .mod import check_lamp, check_uid
 
 
 def listener() -> None:
+    """
+    This function receives commands from microcontrollers.
+    """
+
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     sock.bind(("", LISNER_PORT))
@@ -32,7 +36,7 @@ def listener() -> None:
                                 port: str = message[1][1]
                                 check_uid(uid, ip, port)
                         except:
-                            print("Nierozpoznana komenda")
+                            print("Unrecognized command.")
         except:
             if not threading.main_thread().is_alive():
                 sock.close()

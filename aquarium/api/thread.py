@@ -10,8 +10,10 @@ from .mod import check_aqua
 
 
 def aquas_check():
-    """Get all aquas from the server then check if they aren't up to date
-    return new values fluolamp and leds"""
+    """
+    Get all aquas' settings from the main server then check if they aren't up to date
+    return new values fluorescent lamp  and leds
+    """
     old_minutes = datetime.now().minute
     while True:
         new_minutes = datetime.now().minute

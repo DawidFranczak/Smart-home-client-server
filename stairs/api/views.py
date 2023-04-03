@@ -5,8 +5,12 @@ from const.mod import send_data
 
 
 @api_view(["PUT"])
-# /api/stairs/change/
 def change_stairs(request):
+    """
+    This funciotn sends new settings to stair's microcontroller
+
+    endpoint:/api/stairs/change/
+    """
     message: str = request.data.get("message")
     ip: str = request.data.get("ip")
     port: int = int(request.data.get("port"))

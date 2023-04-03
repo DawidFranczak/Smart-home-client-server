@@ -7,7 +7,12 @@ from .mod import change_light
 
 @api_view(["PUT"])
 def toggle_light(request):
-    ip: str = request.data["ip"]obtain
+    """
+    This function is for turning on/off lamps in a home.
+
+    endpoint: "api/light/light/"
+    """
+    ip: str = request.data["ip"]
     port: int = int(request.data["port"])
     message = change_light(ip, port)
 

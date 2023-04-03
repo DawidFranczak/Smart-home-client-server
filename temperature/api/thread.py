@@ -10,6 +10,9 @@ from .mod import measurement
 
 
 def temp_check() -> None:
+    """
+    This function takes temperature measurements every hour.
+    """
     hour_old = datetime.now().hour
     while True:
         hour_now = datetime.now().hour
@@ -38,6 +41,6 @@ def temp_check() -> None:
                 )
                 hour_old = hour_now
             except TimeoutError:
-                print("Brak połączenia natępna próba za 1s")
+                print("Connection lost. Next attempt in 1s")
                 time.sleep(1)
         time.sleep(1)

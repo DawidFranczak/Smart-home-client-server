@@ -6,8 +6,12 @@ from .mod import check_aqua, send_data
 
 
 @api_view(["POST"])
-# /aquarium/change
 def aqua_change(request):
+    """
+    This function sends a message to the aquarium's microcontroller.
+
+    endpoint : /aquarium/change
+    """
     message: str = request.POST.get("message")
     ip: str = request.POST.get("ip")
     port: int = int(request.POST.get("port"))
@@ -18,9 +22,12 @@ def aqua_change(request):
 
 
 @api_view(["POST"])
-# /aquarium/check
 def aqua_check(request):
+    """
+    TThis function checks LED and fluorescent lamps depending on the hour.
 
+    endpoint : /aquarium/check
+    """
     response = check_aqua(request)
 
     if response["success"]:
