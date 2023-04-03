@@ -20,12 +20,17 @@ def listener() -> None:
             if message:
                 match message:
                     case ("still" | "click" | "RFID"):
-                        check_lamp(data_rec)
+                        message: str = message[0].decode("UTF-8")
+                        ip: str = message[1][0]
+                        check_lamp(message, ip)
                     case _:
                         try:
                             UID = int(message)
                             if type(UID) == int:
-                                check_uid(data_rec)
+                                uid: str = message[0].decode("UTF-8")
+                                ip: str = message[1][0]
+                                port: str = message[1][1]
+                                check_uid(uid, ip, port)
                         except:
                             print("Nierozpoznana komenda")
         except:
