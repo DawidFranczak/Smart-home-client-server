@@ -12,6 +12,7 @@ def add_new_device(request):
     answer: str = request.POST.get("answer")
     port: int = int(request.POST.get("port"))
     response = add_device(message, answer, port)
+
     if response["success"]:
         return Response(response, status=status.HTTP_200_OK)
     return Response({}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

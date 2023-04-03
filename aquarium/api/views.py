@@ -20,8 +20,9 @@ def aqua_change(request):
 @api_view(["POST"])
 # /aquarium/check
 def aqua_check(request):
-    response = check_aqua(request.POST)
 
-    if response["response"]:
+    response = check_aqua(request)
+
+    if response["success"]:
         return Response(response, status=status.HTTP_200_OK)
-    return Response({"response": False}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    return Response({"success": False}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
