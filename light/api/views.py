@@ -19,4 +19,4 @@ def toggle_light(request):
     if message["result"]:
         return Response(message, status=status.HTTP_200_OK)
 
-    return Response(message, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    return Response({"success": False}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

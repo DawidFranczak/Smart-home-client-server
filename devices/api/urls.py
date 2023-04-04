@@ -1,5 +1,6 @@
 from django.urls import path
-from views import add_new_card, add_new_device
+
+from .views import add_new_card, add_new_device
 
 urlpatterns = [
     path("add/", add_new_device, name="addDevice"),

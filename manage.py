@@ -24,8 +24,8 @@ def main():
 
 
 if __name__ == "__main__":
-    threading.Thread(target=listener).start()
-    threading.Thread(target=aquas_check, daemon=True).start()
-    threading.Thread(target=temp_check, daemon=True).start()
+    # threading.Thread(target=listener).start()
+    # threading.Thread(target=aquas_check, daemon=True).start()
+    # threading.Thread(target=temp_check, daemon=True).start()
 
     main()
